@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentService } from '../content.service';
+import {GlobalProvider} from '../../GlobalProvider/global'
 
 @Component({
   selector: 'app-side-bar',
@@ -10,19 +11,34 @@ export class SideBarComponent implements OnInit {
 
   files: any;
   trim : any;
-  constructor(private service: ContentService) { }
+  content : any;
+
+  constructor(private service: ContentService, private global: GlobalProvider) { }
 
   ngOnInit(): void {
-    this.getAllOrders();
+    this.allFiles();
   }
 
-  getAllOrders() {
+  allFiles() {
     this.service
       .getAllfiles()
       .subscribe((res: any) => {
         if (res.code == 200) {
           console.log(res.files,"#########")
           this.files = res["files"]
+        }
+      })
+  }
+
+  readname(file){
+    console.log(file,"#####")
+    this.service
+      .showfiles(file)
+      .subscribe((res: any) => {
+        if (res.code == 200) {
+          // console.log(res.content,"#########") 
+          this.global.fileContent = res["content"]
+          console.log(this.global.fileContent,"#########")
         }
       })
   }

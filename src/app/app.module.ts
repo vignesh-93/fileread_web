@@ -9,6 +9,7 @@ import { TexteditorComponent } from './texteditor/texteditor.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ContentService } from './content.service';
+import { GlobalProvider } from 'src/GlobalProvider/global';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ContentService } from './content.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ContentService],
+  providers: [ContentService,GlobalProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

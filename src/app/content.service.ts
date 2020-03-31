@@ -14,4 +14,13 @@ export class ContentService {
     return this.http.get(this.url + '/showfile');
   }
 
+  showfiles(filename) {
+    console.log("test",filename)
+    return this.http.get(this.url + '/readfile?name='+ filename + '.txt');
+  }
+
+  updatefile(body){
+    console.log("test",body)
+    return this.http.post(this.url + '/writefile', body);
+  }
 }
