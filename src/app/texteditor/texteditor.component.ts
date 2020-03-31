@@ -22,6 +22,8 @@ export class TexteditorComponent implements OnInit {
 
   res: any;
 
+  bodyContent : object;
+
   constructor(private router: Router, public global: GlobalProvider,private service: ContentService) { }
   contentdata = new Content();
 
@@ -33,24 +35,22 @@ export class TexteditorComponent implements OnInit {
       forcePasteAsPlainText: true
     };
   }
-  
 
-  // bodyContent = {
-  //   a : this.global.fileName,
-  //   b : this.global.fileContent
-  // }
-
-  onSubmit() {
+  onSubmit() {  
+  this.bodyContent = {
+    filename : this.global.fileName,
+    content : this.global.fileContent
+  }
     // console.log(this.global.fileName,"@@@@@@@@@")
     // console.log(this.global.fileContent,"########")
     // console.log(this.bodyContent)
-    // this.service
-    //   .updatefile(this.bodyContent)
-    //   .subscribe((res: any) => {
-    //     if (res.code == 200) {
-    //       console.log("sucs")
-    //     }
-    //   })
+    this.service
+      .updatefile(this.bodyContent)
+      .subscribe((res: any) => {
+        if (res.code == 200) {
+          alert(res.status)
+        }
+      })
   }
 
 }
