@@ -5,5 +5,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContentService {
 
-  constructor() { }
+  url: any = "http://localhost:8000";
+
+  constructor(private http: HttpClient) { }
+
+  getAllfiles() {
+    console.log("test")
+    return this.http.get(this.url + '/showfile');
+  }
+
 }
