@@ -53,4 +53,10 @@ export class TexteditorComponent implements OnInit {
       })
   }
 
+  redirect(){
+    this.router.navigate(['newdoc'])
+    this.global.fileContent = null
+    this.global.fileName = null
+  }
+
 }

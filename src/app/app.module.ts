@@ -10,12 +10,14 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ContentService } from './content.service';
 import { GlobalProvider } from 'src/GlobalProvider/global';
+import { CreateDocComponent } from './create-doc/create-doc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TexteditorComponent,
-    SideBarComponent
+    SideBarComponent,
+    CreateDocComponent
   ],
   imports: [
     BrowserModule,
